@@ -498,8 +498,6 @@ namespace OLED12864_I2C {
      */
     //% blockId="initialize_and_get_ultrasonic_distance" 
     //% block="ultrasonic on trig %trigPin|echo %echoPin|distance in %unit"
-    //% subcategory="Sensors"
-    //% group="Ultrasonic Sensor"
     //% trigPin.defl=PWM.P0
     //% echoPin.defl=PWM.P1
     //% unit.defl=Unit.Centimeters
