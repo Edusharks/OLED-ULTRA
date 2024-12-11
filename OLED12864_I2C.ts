@@ -454,4 +454,86 @@ namespace OLED12864_I2C {
     clear();
     _ZOOM = 1;
   }
+
+    // Enum for PWM pins
+    export enum PWM {
+        //% block="P0"
+        P0 = DigitalPin.P0,
+        //% block="P1"
+        P1 = DigitalPin.P1,
+        //% block="P2"
+        P2 = DigitalPin.P2,
+        //% block="P8"
+        P8 = DigitalPin.P8,
+        //% block="P12"
+        P12 = DigitalPin.P12,
+        //% block="P13"
+        P13 = DigitalPin.P13,
+        //% block="P14"
+        P14 = DigitalPin.P14,
+        //% block="P15"
+        P15 = DigitalPin.P15,
+        //% block="P16"
+        P16 = DigitalPin.P16
+    }
+
+    ////////////////////
+    // Sensors //
+    ////////////////////
+
+    // Enum for Distance Units
+    export enum Unit {
+        //% block="cm"
+        Centimeters,
+        //% block="inches"
+        Inches
+    }
+
+    /**
+     * Initialize Ultrasonic Sensor and get distance
+     * @param trigPin TRIG pin of the sensor
+     * @param echoPin ECHO pin of the sensor
+     * @param unit Desired distance unit
+     * @param maxCmDistance Maximum measurable distance in centimeters (default is 500)
+     */
+    //% blockId="initialize_and_get_ultrasonic_distance" 
+    //% block="ultrasonic on trig %trigPin|echo %echoPin|distance in %unit"
+    //% subcategory="Sensors"
+    //% group="Ultrasonic Sensor"
+    //% trigPin.defl=PWM.P0
+    //% echoPin.defl=PWM.P1
+    //% unit.defl=Unit.Centimeters
+    //% weight=100 blockGap=8
+    export function initializeAndGetUltrasonicDistance(
+        trigPin: PWM,
+        echoPin: PWM,
+        unit: Unit,
+        maxCmDistance = 500
+    ): number {
+        // Send pulse to trigger ultrasonic sensor
+        pins.setPull(trigPin, PinPullMode.PullNone);
+        pins.digitalWritePin(trigPin, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(trigPin, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(trigPin, 0);
+
+        // Read pulse duration from echo pin
+        const d = pins.pulseIn(echoPin, PulseValue.High, maxCmDistance * 58);
+
+        // Handle case where no echo is received
+        if (d === 0) {
+            return -1; // Return -1 for no response
+        }
+
+        // Convert pulse duration to distance
+        switch (unit) {
+            case Unit.Centimeters:
+                return Math.idiv(d, 58); // Convert to cm
+            case Unit.Inches:
+                return Math.idiv(d, 148); // Convert to inches
+            default:
+                return -1;
+        }
+    }
 }
