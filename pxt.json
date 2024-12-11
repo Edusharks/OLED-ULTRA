@@ -8,6 +8,8 @@
   },
   "files": [
     "README.md",
+    "main.blocks",
+        "main.ts",
     "pxtparts.json",
     "OLED12864_I2C.ts",
     "parts/OLED12864_I2C.svg"
