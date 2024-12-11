@@ -27,7 +27,7 @@
     "numberOfPins": 4,
     "instantiation": {
       "kind": "function",
-      "fullyQualifiedName": "One_Bit.initializeAndGetUltrasonicDistance",
+      "fullyQualifiedName": "OLED12864_I2C.initializeAndGetUltrasonicDistance",
       "argumentRoles": [
         { "pinInstantiationIdx": 0 },
         { "pinInstantiationIdx": 1 },
