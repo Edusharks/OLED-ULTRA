@@ -2,54 +2,57 @@
   "OLED12864_I2C": {
     "visual": {
       "image": "parts/Ultrasonic.svg",
-      "width": 82,
+      "width": 176,
       "height": 82,
       "pinDistance": 7.2,
       "pinLocations": [
         {
-          "x": 29,
-          "y": 5
+          "x": 76,
+          "y": 8
         },
         {
-          "x": 37,
-          "y": 5
+          "x": 85,
+          "y": 8
         },
         {
-          "x": 44,
-          "y": 5
+          "x": 92,
+          "y": 8
         },
         {
-          "x": 51,
-          "y": 5
+          "x": 101,
+          "y": 8
         }
       ]
     },
     "numberOfPins": 4,
     "instantiation": {
       "kind": "function",
-      "fullyQualifiedName": "OLED12864_I2C.pixel,OLED12864_I2C.showString,OLED12864_I2C.showNumber,OLED12864_I2C.hline,OLED12864_I2C.vline,OLED12864_I2C.rect,OLED12864_I2C.invert,OLED12864_I2C.draw,OLED12864_I2C.clear,OLED12864_I2C.on,OLED12864_I2C.off,OLED12864_I2C.zoom,OLED12864_I2C.init",
-      "argumentRoles": [{
-                    "pinInstantiationIdx": 0
-                }]
+      "fullyQualifiedName": "One_Bit.initializeAndGetUltrasonicDistance",
+      "argumentRoles": [
+        { "pinInstantiationIdx": 0 },
+        { "pinInstantiationIdx": 1 },
+        { "pinInstantiationIdx": 2 },
+        { "pinInstantiationIdx": 3 }
+      ]
     },
     "pinDefinitions": [
-      {
-        "target": "threeVolt",
-        "style": "male",
-        "orientation": "+Y"
-      },
       {
         "target": "ground",
         "style": "male",
         "orientation": "+Y"
       },
       {
-        "target": "SCL",
+        "target": "P1",
         "style": "male",
         "orientation": "+Y"
       },
       {
-        "target": "SDA",
+        "target": "P0",
+        "style": "male",
+        "orientation": "+Y"
+      },
+      {
+        "target": "threeVolt",
         "style": "male",
         "orientation": "+Y"
       }
