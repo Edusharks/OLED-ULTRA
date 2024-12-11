@@ -1,7 +1,7 @@
 {
   "OLED12864_I2C": {
     "visual": {
-      "image": "parts/OLED12864_I2C.svg",
+      "image": "parts/Ultrasonic.svg",
       "width": 82,
       "height": 82,
       "pinDistance": 7.2,
